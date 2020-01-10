@@ -1,24 +1,33 @@
 #include "hello.h"
 
 
-static int hello_init(struct hello* self, int num)
+static int hello_init(void* self_, int num)
 {
+    struct hello* self = (struct hello*)self_;
+
     self->ops = &hello_ops_;
-    self->num = num;
+    self->num= num;
+    return 0;
 }
 
-static int hello_set(struct hello* self, int val)
+static void hello_set(void* self_, int val)
 {
+    struct hello* self = (struct hello*)self_;
+    
     self->num = val;
 }
 
-static int hello_get(struct hello* self)
+static int hello_get(void* self_)
 {
+    struct hello* self = (struct hello*)self_;
+    
     return self->num;
 }
 
-static void hello_exit(struct hello* self)
+static void hello_exit(void* self_)
 {
+    struct hello* self = (struct hello*)self_;
+    
     self->num = 0;
 }
 

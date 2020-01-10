@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "hello.h"
+#include "hello_ext.h"
 
 
 int main()
@@ -20,6 +21,16 @@ int main()
 
     hello_->ops->exit(hello_);
     free(hello_);
+
+    
+    struct hello_ext* hello_ext_ = malloc(sizeof(struct hello_ext));
+    hello_ext_ops_.init(hello_ext_, 1, 2);
+
+    struct hello* hello1 = (struct hello*)hello_ext_;
+    
+
+    
+
 
     return 0;
 }

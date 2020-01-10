@@ -12,11 +12,13 @@ struct hello
 struct hello_ops
 {
     // struct hello* create(int num);
-    int (*init)(struct hello* self, int num);
-    int (*set)(struct hello* self, int val);
-    int (*get)(struct hello* self);
-    void (*exit)(struct hello* self);
-    // void destroy(struct hello* self);
+    // void destroy(void* self_);
+
+    int (*init)(void* self_, int num);
+    void (*exit)(void* self_);
+    
+    void (*set)(void* self_, int num);
+    int (*get)(void* self_);
 };
 
 extern const struct hello_ops hello_ops_;
